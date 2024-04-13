@@ -452,19 +452,33 @@ footer {
   bottom: 0%;
 }
 
-.whats-app {
+.connect {
   position: fixed;
   width: 60px;
   height: 60px;
-  bottom: 40px;
+  /* bottom: 40px; */
   right: 15px;
-  background-color: #25d366;
   color: #FFF;
   border-radius: 50px;
   text-align: center;
   font-size: 30px;
   box-shadow: 2px 2px 3px #999;
   z-index: 100;
+}
+
+#whats-app {
+  bottom: 40px;
+  background-color: #25d366;
+}
+
+#insta {
+  bottom: 120px;
+  background: radial-gradient(circle at 30% 110%,
+      #ffdb8b 0%,
+      #ee653d 25%,
+      #d42e81 50%,
+      #a237b6 75%,
+      #3e57bc 100%);
 }
 
 .my-float {
