@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Upload Reviews</title>
+    <link rel="stylesheet" href="css/Blogs.css" />
+    <link rel="stylesheet" href="css/review-list.css" />
+
+    <!-- Adjust the path to your CSS file accordingly -->
+  </head>
+  <body>
+    <section id="review-container">
+      <section id="review-list">
+        <h2>Review List</h2>
+        <ul id="reviews">
+          <!-- Sample review item (remove when adding real functionality) -->
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+          <li><strong>John Doe</strong>: Great product! Highly recommended.</li>
+        </ul>
+      </section>
+      <section id="uplaod-review">
+        <h2>Upload Reviews</h2>
+        <form id="review-form" action="#" method="POST">
+          <label for="reviewer-name">Reviewer Name:</label>
+          <input
+            type="text"
+            id="reviewer-name"
+            name="reviewer-name"
+            required
+          /><br />
+
+          <label for="review">Review:</label>
+          <textarea
+            id="review"
+            name="review"
+            rows="4"
+            required
+            style="width: 100%"
+          ></textarea
+          ><br />
+
+          <label for="review-image">Review Image:</label>
+          <input
+            type="file"
+            id="review-image"
+            name="review-image"
+            accept="image/*"
+            required
+          /><br />
+
+          <button type="submit">Upload Review</button>
+        </form>
+      </section>
+    </section>
+  </body>
+</html>
