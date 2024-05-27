@@ -1,4 +1,5 @@
  // reference
+ 
  const BlogsFormDB = firebase.database().ref('Blogs');
   
  document.getElementById("upload-blog").addEventListener("submit", submitForm);
