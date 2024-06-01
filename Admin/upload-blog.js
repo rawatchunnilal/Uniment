@@ -1,5 +1,5 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -15,35 +15,27 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-console.log("Firebase initialized:", app);
+const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-// Handle form submission
-document.getElementById('blog-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
+document.getElementById('blog-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-  // Get form values
   const title = document.getElementById('blog-title').value;
-  const author = document.getElementById('uploader-name').value;
-  const link = document.getElementById('blog-link').value;
-
-  console.log("Form Values:", { title, author, link });
+  const authorName = document.getElementById('author-name').value;
+  const blogLink = document.getElementById('blog-link').value;
 
   try {
-    // Add a new document with a generated id in the 'Blogs' collection
     const docRef = await addDoc(collection(db, "Blogs"), {
       title: title,
-      author: author,
-      link: link,
-      timestamp: new Date()  // Optional: remove if not needed
+      author: authorName,
+      link: blogLink,
+      timestamp: new Date()
     });
-    console.log("Document written with ID: ", docRef.id);
     alert("Blog uploaded successfully!");
+    document.getElementById('blog-form').reset();
   } catch (e) {
     console.error("Error adding document: ", e);
-    alert("There was an error uploading the blog. Please try again.");
+    alert("Error uploading blog.");
   }
-
-  // Reset the form
-  document.getElementById('blog-form').reset();
 });
