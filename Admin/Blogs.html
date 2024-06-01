@@ -24,71 +24,10 @@
           <img src="blog-thumbnail2.jpg" alt="Blog Thumbnail" />
           <a href="blog2.html">Read More</a>
         </div>
-        <div class="blog-item">
-          <h3>Blog Title 1</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail1.jpg" alt="Blog Thumbnail" />
-          <a href="blog1.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 2</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail2.jpg" alt="Blog Thumbnail" />
-          <a href="blog2.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 1</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail1.jpg" alt="Blog Thumbnail" />
-          <a href="blog1.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 2</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail2.jpg" alt="Blog Thumbnail" />
-          <a href="blog2.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 1</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail1.jpg" alt="Blog Thumbnail" />
-          <a href="blog1.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 2</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail2.jpg" alt="Blog Thumbnail" />
-          <a href="blog2.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 1</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail1.jpg" alt="Blog Thumbnail" />
-          <a href="blog1.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 2</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail2.jpg" alt="Blog Thumbnail" />
-          <a href="blog2.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 1</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail1.jpg" alt="Blog Thumbnail" />
-          <a href="blog1.html">Read More</a>
-        </div>
-        <div class="blog-item">
-          <h3>Blog Title 2</h3>
-          <p>Uploaded by: Admin</p>
-          <img src="blog-thumbnail2.jpg" alt="Blog Thumbnail" />
-          <a href="blog2.html">Read More</a>
-        </div>
-        <!-- Add more blog items as needed -->
       </section>
       <section id="upload-blog">
         <h2>Upload Blog</h2>
-        <form id="blog-form" action="" method="POST">
+        <form id="blog-form">
           <label for="blog-title">Title:</label>
           <input type="text" id="blog-title" name="blog-title" required /><br />
 
@@ -100,31 +39,14 @@
             required
           /><br />
 
-          <label for="upload-date">Upload Date:</label>
-          <input
-            type="date"
-            id="upload-date"
-            name="upload-date"
-            required
-          /><br />
-
           <label for="blog-link">Blog Link:</label>
           <input type="url" id="blog-link" name="blog-link" required /><br />
 
-          <label for="thumbnail">Thumbnail Image:</label>
-          <input
-            type="file"
-            id="thumbnail"
-            name="thumbnail"
-            accept="image/*"
-            required
-          /><br />
-
-          <button type="button">Upload</button>
+          <button type="submit">Upload</button>
         </form>
       </section>
     </section>
-    <script src="db/db.js"></script>
-    <script src="db/blogs.js"></script>
+
+    <script type="module" src="upload-blog.js"></script>
   </body>
 </html>
