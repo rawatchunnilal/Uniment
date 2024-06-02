@@ -24,18 +24,22 @@ const storage = getStorage(app);
 async function renderBlogList() {
   const blogList = document.getElementById('blog-list');
   blogList.innerHTML = ''; // Clear existing blog items
+  blogList.classList.add('blog-grid', 'row'); // Adding blog-grid and row classes
 
   try {
     const querySnapshot = await getDocs(collection(db, 'Blogs'));
     querySnapshot.forEach((doc) => {
       const blogData = doc.data();
       const blogItem = document.createElement('div');
-      blogItem.classList.add('blog-item');
+      blogItem.classList.add('blog-item', 'card', 'col-lg-5', 'col-md-5', 'col-sm-12', 'mb-4'); // Adding grid classes
       blogItem.innerHTML = `
-        <h3>${blogData.title}</h3>
-        <p>Uploaded by: ${blogData.author}</p>
-        <img src="${blogData.thumbnail}" alt="Blog Thumbnail" />
-        <a href="${blogData.link}">Click to open</a>
+        <img src="${blogData.thumbnail || 'placeholder.png'}" alt="Blog Thumbnail" class="card-img-top" />
+        <div class="card-body">
+          <h3 class="card-title">${blogData.title || 'No title'}</h3>
+          <p class="card-text">Uploaded by: ${blogData.author || 'No author'}</p>
+          <p class="card-description">${blogData.description || 'No description'}</p>
+          <a href="${blogData.link || '#'}" class="btn btn-primary">Read more...</a>
+        </div>
       `;
       blogList.appendChild(blogItem);
     });
@@ -43,6 +47,7 @@ async function renderBlogList() {
     console.error('Error retrieving blog data:', error);
   }
 }
+
 
 // Call renderBlogList() to fetch existing blog data from Firestore and render it when the page loads
 window.addEventListener('DOMContentLoaded', () => {
@@ -53,35 +58,40 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById('blog-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const title = document.getElementById('blog-title').value;
-  const authorName = document.getElementById('author-name').value;
-  const blogLink = document.getElementById('blog-link').value;
+  const title = document.getElementById('blog-title').value.trim() || 'No title';
+  const authorName = document.getElementById('author-name').value.trim() || 'No author';
+  const blogLink = document.getElementById('blog-link').value.trim() || '#';
+  const blogDescription = document.getElementById('blog-description').value.trim() || 'No description';
   const thumbnailFile = document.getElementById('blog-thumbnail').files[0];
 
   try {
-    // Upload thumbnail to Firebase Storage in "/Blog-Thumbnails" folder
-    const storageRef = ref(storage, `Blog-Thumbnails/${thumbnailFile.name}`);
-    await uploadBytes(storageRef, thumbnailFile);
+    let thumbnailURL = 'placeholder.png';
+    if (thumbnailFile) {
+      // Upload thumbnail to Firebase Storage in "/Blog-Thumbnails" folder
+      const storageRef = ref(storage, `Blog-Thumbnails/${thumbnailFile.name}`);
+      await uploadBytes(storageRef, thumbnailFile);
 
-    // Get URL of the uploaded thumbnail
-    const thumbnailURL = await getDownloadURL(storageRef);
+      // Get URL of the uploaded thumbnail
+      thumbnailURL = await getDownloadURL(storageRef);
+    }
 
     // Add blog data to Firestore
-    const docRef = await addDoc(collection(db, "Blogs"), {
+    const docRef = await addDoc(collection(db, 'Blogs'), {
       title: title,
       author: authorName,
       link: blogLink,
+      description: blogDescription,
       thumbnail: thumbnailURL,
       timestamp: new Date()
     });
 
-    alert("Blog uploaded successfully!");
+    alert('Blog uploaded successfully!');
     document.getElementById('blog-form').reset();
 
     // After successful upload, re-render the blog list to include the new blog
     renderBlogList();
   } catch (error) {
-    console.error("Error uploading blog:", error);
-    alert("Error uploading blog.");
+    console.error('Error uploading blog:', error);
+    alert('Error uploading blog.');
   }
 });

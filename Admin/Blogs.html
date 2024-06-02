@@ -4,45 +4,117 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard - Upload Blogs</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="css/Blogs.css" />
-    <link rel="stylesheet" href="css/Blog-list.css" />
+    <!-- <link rel="stylesheet" href="css/Blog-list.css" /> -->
     <link rel="shortcut icon" href="../icons/logo.svg" type="image/x-icon" />
   </head>
   <body>
-    <section id="blog-container">
-      <section id="blog-list">
-        <h2>Blog List</h2>
-      </section>
-      <section id="upload-blog">
-        <h2>Upload Blog</h2>
-        <form id="blog-form">
-          <label for="blog-title">Title:</label>
-          <input type="text" id="blog-title" name="blog-title" required /><br />
-
-          <label for="author-name">Author:</label>
-          <input
-            type="text"
-            id="author-name"
-            name="author-name"
-            required
-          /><br />
-
-          <label for="blog-link">Link:</label>
-          <input type="url" id="blog-link" name="blog-link" required /><br />
-
-          <label for="blog-thumbnail">Thumbnail:</label>
-          <input
-            type="file"
-            id="blog-thumbnail"
-            name="blog-thumbnail"
-            accept="image/*"
-            required
-          /><br />
-
-          <button type="submit">Upload</button>
-        </form>
-      </section>
-    </section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8" style="height: 100%" id="blog-list">
+          <h2 class="sticky-top bg-white">Blog List</h2>
+          <div class="blog-grid">
+            <div class="blog-item card">
+              <img
+                src="../images//front-view-businessman-with-wooden-building-blocks.jpg"
+                alt="Blog Thumbnail"
+                class="card-img-top"
+              />
+              <div class="card-body">
+                <h3 class="card-title">Blog Title 1</h3>
+                <p class="card-text">Author: John Doe</p>
+                <p class="card-description">
+                  This is a short description of the blog post. It gives an
+                  overview of the content and entices the reader to read more.
+                </p>
+                <p><a href="#" class="btn btn-primary">Read more...</a></p>
+              </div>
+            </div>
+            <div class="blog-item card">
+              <img
+                src="../images/successful-businesswoman-working-hard-laptop-computer-her-office-dressed-up-white-clothes.jpg"
+                alt="Blog Thumbnail"
+                class="card-img-top"
+              />
+              <div class="card-body">
+                <h3 class="card-title">Blog Title 2</h3>
+                <p class="card-text">Author: Jane Doe</p>
+                <p class="card-description">
+                  This is a short description of the blog post. It gives an
+                  overview of the content and entices the reader to read more.
+                </p>
+                <p><a href="#" class="btn btn-primary">Read more...</a></p>
+              </div>
+            </div>
+            <!-- Add more blog items as needed -->
+          </div>
+        </div>
+        <div class="col-md-4" style="height: 100%" id="upload-blog">
+          <h2>Upload Blog</h2>
+          <form id="blog-form">
+            <div class="form-group">
+              <label for="blog-title">Title:</label>
+              <input
+                type="text"
+                id="blog-title"
+                name="blog-title"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="author-name">Author:</label>
+              <input
+                type="text"
+                id="author-name"
+                name="author-name"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="blog-link">Link:</label>
+              <input
+                type="url"
+                id="blog-link"
+                name="blog-link"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="blog-thumbnail">Thumbnail:</label>
+              <input
+                type="file"
+                id="blog-thumbnail"
+                name="blog-thumbnail"
+                class="form-control-file"
+                accept="image/*"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="blog-description">Description:</label>
+              <textarea
+                id="blog-description"
+                name="blog-description"
+                class="form-control"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <script type="module" src="upload-blog.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

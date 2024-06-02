@@ -101,11 +101,12 @@ button[type="submit"]:hover {
 
 /* New styles for the blog upload section */
 #upload-blog,
-#uplaod-review {
+#upload-review {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
 }
 
 #blog-container,
@@ -114,4 +115,120 @@ button[type="submit"]:hover {
     justify-content: space-between;
     width: 100%;
     max-height: 80vh;
+}
+
+#blog-list-container {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 100vh;
+    padding: 20px;
+}
+
+#blog-list-container h2 {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    /* Center the cards in the container */
+}
+
+.blog-item {
+    width: 300px;
+    /* Fixed width for all cards */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-item img {
+    width: 100%;
+    height: 200px;
+    /* Fixed height for the images */
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-title {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.card-text {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.card-description {
+    flex-grow: 1;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.card-description,
+.card-text {
+    margin-bottom: 10px;
+}
+
+.card a {
+    align-self: flex-start;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+    background-color: #45a049;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-height: 400px) {
+    .blog-item {
+        max-height: 400px;
+    }
+}
+
+/* For mobile devices */
+@media screen and (max-width: 576px) {
+    .blog-item {
+        max-height: 300px;
+        /* Adjust the value as needed */
+    }
 }
