@@ -7,55 +7,39 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="css/dashboard.css" />
   </head>
-  <body onload="initializeBlogPage()">
+  <body>
     <header>
       <h1>Admin Dashboard</h1>
     </header>
     <nav aria-label="Main">
       <ul>
-        <li><a href="#blogs" onclick="loadBlogContent()">Blogs</a></li>
+        <li><a id="blogs-button" href="Blogs.html">Blogs</a></li>
         <li><a href="#reviews" onclick="loadReviewContent()">Reviews</a></li>
         <!-- Add more navigation options for future features -->
       </ul>
     </nav>
-
-    <main id="main"></main>
+    <main id="main">
+      <div id="container"></div>
+    </main>
     <footer>
       <p>&copy; 2024 Uniment Services</p>
     </footer>
-
-    <script>
-      function loadBlogContent() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("main").innerHTML = this.responseText;
-            executeScripts(document.getElementById("main")); // Execute scripts after loading content
-          }
-        };
-        xhttp.open("GET", "Blogs.html", true);
-        xhttp.send();
-      }
-
-      function loadReviewContent() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("main").innerHTML = this.responseText;
-            executeScripts(document.getElementById("main")); // Execute scripts after loading content
-          }
-        };
-        xhttp.open("GET", "Review.html", true);
-        xhttp.send();
-      }
-
-      function executeScripts(element) {
-        // Find script tags within the provided element and execute them
-        var scripts = element.getElementsByTagName("script");
-        for (var i = 0; i < scripts.length; i++) {
-          eval(scripts[i].innerHTML); // Execute script using eval
-        }
-      }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#blogs-button").click(function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: "Blogs.html",
+            success: function (data) {
+              $("#main").html(data);
+              var script = document.createElement("script");
+              script.src = "upload-blogs.js";
+              document.body.appendChild(script);
+            },
+          });
+        });
+      });
+    </script> -->
   </body>
 </html>

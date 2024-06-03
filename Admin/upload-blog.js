@@ -33,7 +33,7 @@ async function renderBlogList() {
       const blogItem = document.createElement('div');
       blogItem.classList.add('blog-item', 'card', 'col-lg-5', 'col-md-5', 'col-sm-12', 'mb-4'); // Adding grid classes
       blogItem.innerHTML = `
-        <img src="${blogData.thumbnail || 'placeholder.png'}" alt="Blog Thumbnail" class="card-img-top" />
+        <img src="${blogData.thumbnail || 'placeholder.svg'}" alt="Blog Thumbnail" class="card-img-top" />
         <div class="card-body">
           <h3 class="card-title">${blogData.title || 'No title'}</h3>
           <p class="card-text">Uploaded by: ${blogData.author || 'No author'}</p>
@@ -49,10 +49,31 @@ async function renderBlogList() {
 }
 
 
-// Call renderBlogList() to fetch existing blog data from Firestore and render it when the page loads
 window.addEventListener('DOMContentLoaded', () => {
   renderBlogList();
+  observeBlogList();
 });
+
+function observeBlogList() {
+  const blogListElement = document.getElementById('blog-list');
+  if (blogListElement) {
+    renderBlogList();
+  } else {
+    const observer = new MutationObserver((mutations, obs) => {
+      const blogListElement = document.getElementById('blog-list');
+      if (blogListElement) {
+        renderBlogList();
+        obs.disconnect(); // Stop observing once the blog list is found and loaded
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+}
+
 
 // Function to handle form submission and upload a new blog with a thumbnail image
 document.getElementById('blog-form').addEventListener('submit', async (e) => {
